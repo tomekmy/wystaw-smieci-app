@@ -1,0 +1,7 @@
+<mat-form-field>
+  <mat-select placeholder="Sektor">
+    <mat-option *ngFor="let sector of sectors" [value]="sector.value">
+      {{ sector.viewValue }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
