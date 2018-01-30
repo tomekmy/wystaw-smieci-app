@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatDividerModule} from '@angular/material/divider';
 import {CalendarModule} from 'angular-calendar';
 
 
@@ -24,6 +25,7 @@ import { CalendarComponent } from './calendar/calendar.component';
     BrowserAnimationsModule,
     MatSelectModule,
     MatSlideToggleModule,
+    MatDividerModule,
     CalendarModule.forRoot()
   ],
   providers: [],

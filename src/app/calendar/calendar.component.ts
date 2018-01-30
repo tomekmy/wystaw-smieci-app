@@ -23,7 +23,7 @@ export class MyCalendarUtils extends CalendarUtils {
   selector: 'app-calendar',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.css'],
+  styleUrls: ['./calendar.component.scss'],
   providers: [
     {
       provide: CalendarUtils,
