@@ -1,0 +1,28 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 8em 2em 1fr;
+  grid-template-areas: "sectors description toggle"
+                        "divider divider divider"
+                        "calendar calendar calendar";
+}
+
+.sectors {
+  grid-area: sectors;
+}
+
+.description {
+  grid-area: description;
+}
+
+.toggle {
+  grid-area: toggle;
+}
+
+.divider {
+  grid-area: divider;
+}
+
+.calendar {
+  grid-area: calendar;
+}
