@@ -3,5 +3,6 @@
 @import "~angular-calendar/css/angular-calendar.css";
 
 body {
+  font-family: 'Roboto', sans-serif;
   margin: 0;
 }
