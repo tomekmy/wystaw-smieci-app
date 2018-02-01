@@ -1,10 +1,21 @@
+@import "~variables.scss";
+
 .wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 8em 2em 1fr;
-  grid-template-areas: "sectors description toggle"
-                        "divider divider divider"
-                        "calendar calendar calendar";
+  grid-template-rows: max-content 7em 1em 1fr max-content;
+  align-items: center;
+  grid-template-areas:  "header header header"
+                        "sectors description toggle"
+                        "down-divider down-divider down-divider"
+                        "calendar calendar calendar"
+                        "footer footer footer";
+}
+
+.header {
+  grid-area: header;
+  color: white;
+  background: $primary-color-dark;
 }
 
 .sectors {
@@ -19,10 +30,17 @@
   grid-area: toggle;
 }
 
-.divider {
-  grid-area: divider;
+.down-divider {
+  grid-area: down-divider;
+  align-self: end;
 }
 
 .calendar {
   grid-area: calendar;
+}
+
+.footer {
+  grid-area: footer;
+  color: white;
+  background: $primary-color-dark;
 }

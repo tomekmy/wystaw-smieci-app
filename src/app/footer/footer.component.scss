@@ -1,0 +1,15 @@
+@import "~variables.scss";
+
+.footer {
+  &__link {
+    color: $primary-color-light;
+    text-decoration: none;
+    &:hover {
+      color: $divider-color;
+    }
+  }
+  &__text {
+    font-size: 0.85em;
+    margin: 0.5em 1.65%;
+  }
+}

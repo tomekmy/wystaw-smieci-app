@@ -11,6 +11,9 @@ import { AppComponent } from './app.component';
 import { SectorsComponent } from './sectors/sectors.component';
 import { ToggleComponent } from './toggle/toggle.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import { DescriptionComponent } from './description/description.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -18,7 +21,10 @@ import { CalendarComponent } from './calendar/calendar.component';
     AppComponent,
     SectorsComponent,
     ToggleComponent,
-    CalendarComponent
+    CalendarComponent,
+    DescriptionComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
