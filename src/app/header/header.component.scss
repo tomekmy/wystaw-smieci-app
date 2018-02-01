@@ -1,0 +1,15 @@
+.header {
+  &__wrapper {
+    margin: 0.5em 1.65%;
+  }
+  &__logo {
+    vertical-align: middle;
+  }
+  &__title {
+    font-size: 1em;
+    font-weight: 500;
+    display: inline-block;
+    margin: 0 0.5em;
+    vertical-align: middle;
+  }
+}
