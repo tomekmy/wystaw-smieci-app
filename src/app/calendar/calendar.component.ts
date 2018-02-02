@@ -36,6 +36,10 @@ export class CalendarComponent implements OnInit {
 
   events: CalendarEvent[] = [];
 
+  view: string = 'month';
+
+  clickedDate: Date;
+
   constructor() { }
 
   ngOnInit() {

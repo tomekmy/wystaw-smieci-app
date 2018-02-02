@@ -1,0 +1,13 @@
+<div class="calendar__header__buttons">
+  <button mat-raised-button color="primary" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="viewDateChange.next(viewDate)">
+    Poprzedni
+  </button>
+  <button mat-raised-button color="primary" mwlCalendarToday [(viewDate)]="viewDate" (viewDateChange)="viewDateChange.next(viewDate)">
+    Dziś
+  </button>
+  <button mat-raised-button color="primary" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="viewDateChange.next(viewDate)">
+    Następny
+  </button>
+</div>
+<h3 class="calendar__header__month">{{ viewDate | calendarDate:(view + 'ViewTitle'):locale }}</h3>
+

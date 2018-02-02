@@ -4,6 +4,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatButtonModule} from '@angular/material/button';
 import {CalendarModule} from 'angular-calendar';
 
 
@@ -14,6 +15,7 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { DescriptionComponent } from './description/description.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { CalendarHeaderComponent } from './calendar/calendar-header/calendar-header.component';
 
 
 @NgModule({
@@ -24,7 +26,8 @@ import { FooterComponent } from './footer/footer.component';
     CalendarComponent,
     DescriptionComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    CalendarHeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +35,7 @@ import { FooterComponent } from './footer/footer.component';
     MatSelectModule,
     MatSlideToggleModule,
     MatDividerModule,
+    MatButtonModule,
     CalendarModule.forRoot()
   ],
   providers: [],
