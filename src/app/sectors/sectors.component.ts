@@ -6,7 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sectors.component.scss']
 })
 export class SectorsComponent implements OnInit {
+  // Default user sector is "Wszystkie" but user selection is stored in local storage 
+  userSector: string = 'inherit'
+
   sectors = [
+    {
+      value: 'inherit',
+      viewValue: 'Wszystkie',
+      name: 'Harmonogram odbioru odpadów w Zielonce',
+      boundary: 'Wybierz z menu interesujący cię sektor'
+    },
     {
       value: 'green',
       viewValue: 'Zielony',
