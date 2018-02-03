@@ -1,15 +1,27 @@
 .header {
   &__wrapper {
-    margin: 0.5em 1.65%;
+    display: grid;
+    grid-template-columns: max-content 1fr 1fr;
+    grid-template-rows: 3.5em;
+    align-items: center;
   }
   &__logo {
-    vertical-align: middle;
+    margin-left: 1.65vw;
   }
   &__title {
     font-size: 1em;
     font-weight: 500;
     display: inline-block;
     margin: 0 0.5em;
-    vertical-align: middle;
+  }
+  &__facebook {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    justify-self: end;
+    margin-right: 1.65vw;
+  }
+  &__facebook__logo {
+    margin: 0 0.5em;
   }
 }
