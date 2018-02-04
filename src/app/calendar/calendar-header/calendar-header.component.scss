@@ -3,7 +3,14 @@
     justify-self: start;
     margin: 0 5%;
   }
-  &__month::first-letter {
+  &__nearest {
+    text-align: center;
+  }
+  &__date::first-letter {
     text-transform: capitalize;
+  }
+  &__title, &__date {
+    margin: 0.5em;
+    font-weight: 500;
   }
 }

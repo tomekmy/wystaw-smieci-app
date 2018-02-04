@@ -9,4 +9,7 @@
     Następny
   </button>
 </div>
-<h3 class="calendar__header__month">{{ viewDate | date:'fullDate':'':locale }}</h3>
+<div class="calendar__header__nearest">
+  <h4 class="calendar__header__title">Najbliższy odbiór w wybranym sektorze</h4>
+  <h3 class="calendar__header__date">{{ viewDate | date:'fullDate':'':locale }}</h3>
+</div>
