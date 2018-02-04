@@ -6,3 +6,16 @@ body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
 }
+
+// Overriding calendar styles
+.cal-month-view .cal-day-cell.cal-today {
+  background-color: #C5CAE9;
+}
+
+.cal-month-view .cal-day-number {
+  opacity: 0.6;
+}
+
+.cal-month-view .cal-day-cell.cal-out-month .cal-day-number {
+  opacity: 0.2;
+}
