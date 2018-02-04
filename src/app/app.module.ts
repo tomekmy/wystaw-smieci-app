@@ -1,12 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import localePl from '@angular/common/locales/pl';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
 import {CalendarModule} from 'angular-calendar';
-
 
 import { AppComponent } from './app.component';
 import { SectorsComponent } from './sectors/sectors.component';
@@ -16,6 +17,8 @@ import { DescriptionComponent } from './description/description.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { CalendarHeaderComponent } from './calendar/calendar-header/calendar-header.component';
+
+registerLocaleData(localePl);
 
 
 @NgModule({

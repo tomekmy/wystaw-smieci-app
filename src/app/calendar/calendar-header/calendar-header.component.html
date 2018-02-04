@@ -9,5 +9,4 @@
     Następny
   </button>
 </div>
-<h3 class="calendar__header__month">{{ viewDate | calendarDate:(view + 'ViewTitle'):locale }}</h3>
-
+<h3 class="calendar__header__month">{{ viewDate | date:'fullDate':'':locale }}</h3>

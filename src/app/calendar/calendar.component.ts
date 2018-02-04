@@ -40,6 +40,8 @@ export class CalendarComponent implements OnInit {
 
   clickedDate: Date;
 
+  locale: string = 'pl';
+
   constructor() { }
 
   ngOnInit() {
