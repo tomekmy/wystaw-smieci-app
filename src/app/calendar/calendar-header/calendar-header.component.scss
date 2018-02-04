@@ -3,4 +3,7 @@
     justify-self: start;
     margin: 0 5%;
   }
+  &__month::first-letter {
+    text-transform: capitalize;
+  }
 }
