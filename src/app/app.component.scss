@@ -1,9 +1,10 @@
 @import "~variables.scss";
 
 .wrapper {
+  min-height: 100vh;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: max-content 7em 1em 1fr max-content;
+  grid-template-rows: max-content 7em 1em 1fr auto;
   align-items: center;
   grid-template-areas:  "header header header"
                         "sectors description toggle"
@@ -32,15 +33,17 @@
 
 .down-divider {
   grid-area: down-divider;
-  align-self: end;
+  align-self: center;
 }
 
 .calendar {
   grid-area: calendar;
+  align-self: start;
 }
 
 .footer {
   grid-area: footer;
   color: white;
   background: $primary-color-dark;
+  align-self: end;
 }
