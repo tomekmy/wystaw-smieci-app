@@ -2,13 +2,19 @@
 
 .calendar__header {
   &__buttons {
-    justify-self: start;
+    justify-self: center;
     margin: 0 1.65vw;
+    @include respond-to($calendar-header-buttons) {
+      justify-self: start;
+    }
   }
   &__nearest {
     text-align: center;
-    justify-self: end;
+    justify-self: center;
     margin: 0 1.65vw;
+    @include respond-to($calendar-header-buttons) {
+      justify-self: end;
+    }
     @include respond-to($calendar-header) {
       justify-self: center;
       margin: 0;
@@ -20,5 +26,8 @@
   &__title, &__date {
     margin: 0.5em;
     font-weight: 500;
+  }
+  &__title {
+    color: $secondary-text-color;
   }
 }
