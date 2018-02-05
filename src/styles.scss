@@ -1,10 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "~angular-calendar/css/angular-calendar.css";
+@import "~variables.scss";
 
 body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
+  min-width: 320px;
+  color: $primary-text-color;
 }
 
 // Overriding calendar styles
