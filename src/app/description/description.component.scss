@@ -1,3 +1,10 @@
-.description__text {
-  text-align: center;
+@import "~variables.scss";
+
+.description {
+  &__text {
+    text-align: center;
+  }
+  &__boundary {
+    color: $secondary-text-color;
+  }
 }
