@@ -10,6 +10,9 @@ body {
 // Overriding calendar styles
 .cal-month-view .cal-day-cell.cal-today {
   background-color: #C5CAE9;
+  &:hover {
+    background-color: #C5CAE9;
+  }
 }
 
 .cal-month-view .cal-day-number {
@@ -18,6 +21,14 @@ body {
 
 .cal-month-view .cal-day-cell.cal-out-month .cal-day-number {
   opacity: 0.2;
+}
+
+.cal-month-view .cal-cell-row:hover {
+  background-color: inherit;
+}
+
+.cal-month-view .cal-cell-row .cal-cell:hover:not(.cal-today:hover) {
+  background-color: inherit;
 }
 
 // Overriding material button font size
