@@ -3,14 +3,24 @@
 .wrapper {
   min-height: 100vh;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: max-content 7em 1em 1fr auto;
-  align-items: center;
-  grid-template-areas:  "header header header"
-                        "sectors description toggle"
-                        "down-divider down-divider down-divider"
-                        "calendar calendar calendar"
-                        "footer footer footer";
+  align-items: center;  
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: max-content 5.5em max-content 1em 1fr auto;
+  grid-template-areas:  "header header"
+                        "sectors toggle"
+                        "description description" 
+                        "down-divider down-divider"
+                        "calendar calendar"
+                        "footer footer";
+  @include respond-to($header-collapse) {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: max-content 7em 1em 1fr auto;
+    grid-template-areas:  "header header header"
+                          "sectors description toggle"
+                          "down-divider down-divider down-divider"
+                          "calendar calendar calendar"
+                          "footer footer footer";
+  }
 }
 
 .header {
@@ -21,6 +31,11 @@
 
 .sectors {
   grid-area: sectors;
+  justify-self: start;
+  align-self: end;
+  @include respond-to($header-collapse) {
+    align-self: center;
+  }
 }
 
 .description {
@@ -29,6 +44,7 @@
 
 .toggle {
   grid-area: toggle;
+  justify-self: end;
 }
 
 .down-divider {

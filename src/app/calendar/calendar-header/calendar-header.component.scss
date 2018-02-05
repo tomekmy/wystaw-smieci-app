@@ -1,10 +1,18 @@
+@import "~variables.scss";
+
 .calendar__header {
   &__buttons {
     justify-self: start;
-    margin: 0 5%;
+    margin: 0 1.65vw;
   }
   &__nearest {
     text-align: center;
+    justify-self: end;
+    margin: 0 1.65vw;
+    @include respond-to($calendar-header) {
+      justify-self: center;
+      margin: 0;
+    }
   }
   &__date::first-letter {
     text-transform: capitalize;

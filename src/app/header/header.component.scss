@@ -18,7 +18,7 @@
     color: white;
     text-decoration: none;
     justify-self: end;
-    margin-right: 1.65vw;
+    margin-right: calc(1.65vw - 16px);
   }
   &__facebook__logo {
     margin: 0 0.5em;
