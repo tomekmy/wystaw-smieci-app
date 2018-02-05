@@ -2,10 +2,20 @@
 
 .calendar__header {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
+  grid-template-rows: 4em max-content;
   align-items: center;
   justify-items: center;
+  @include respond-to($calendar-header-buttons) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: max-content;
+  }
   @include respond-to($calendar-header) {
     grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: max-content;
   }
+}
+
+.calendar__devider {
+  margin: 0.4em 0;
 }
