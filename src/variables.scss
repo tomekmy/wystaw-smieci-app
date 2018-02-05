@@ -11,6 +11,7 @@ $divider-color:        #BDBDBD;
 // Breakpoints
 $calendar-header: '(min-width: 64em)'; // 1024px
 $header-collapse: '(min-width: 48em)'; // 768px
+$calendar-header-buttons: '(min-width: 42em)'; // 672px
 
 // Media queries
 @mixin respond-to($media) {
