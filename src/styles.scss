@@ -39,3 +39,8 @@ body {
 .mat-slide-toggle-content {
   font-size: 0.9em;
 }
+
+.mat-form-field-infix {
+  width: auto !important;
+  max-width: 180px;
+}
