@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localePl from '@angular/common/locales/pl';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { CookieLawModule } from 'angular2-cookie-law';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatDividerModule} from '@angular/material/divider';
@@ -35,6 +36,7 @@ registerLocaleData(localePl);
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    CookieLawModule,
     MatSelectModule,
     MatSlideToggleModule,
     MatDividerModule,
