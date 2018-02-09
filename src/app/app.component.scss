@@ -63,3 +63,18 @@
   background: $primary-color-dark;
   align-self: end;
 }
+
+// Overriding cookie law component styles
+::ng-deep .cookie-law-component .cookie-law {
+  .cookie-law-wrapper {
+    font-family: 'Roboto', sans-serif; 
+    background: rgba($primary-color-dark, 0.9);
+  }
+
+  .cookie-law-wrapper .copy span {
+    font-size: 0.9em;
+  }
+  .cookie-law-wrapper .dismiss svg {
+    fill: $divider-color;
+  }
+}
