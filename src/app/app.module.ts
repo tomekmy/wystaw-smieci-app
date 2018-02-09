@@ -18,6 +18,7 @@ import { DescriptionComponent } from './description/description.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { CalendarHeaderComponent } from './calendar/calendar-header/calendar-header.component';
+import { DataService } from './data.service';
 
 registerLocaleData(localePl);
 
@@ -43,7 +44,7 @@ registerLocaleData(localePl);
     MatButtonModule,
     CalendarModule.forRoot()
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
