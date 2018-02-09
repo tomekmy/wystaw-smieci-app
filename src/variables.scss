@@ -9,13 +9,19 @@ $secondary-text-color: #757575;
 $divider-color:        #BDBDBD;
 
 // Breakpoints
-$calendar-header: '(min-width: 64em)'; // 1024px
-$header-collapse: '(min-width: 48em)'; // 768px
-$calendar-header-buttons: '(min-width: 42em)'; // 672px
+$calendar-header: 64em; // 1024px
+$header-collapse: 48em; // 768px
+$calendar-header-buttons: 42em; // 672px
 
 // Media queries
-@mixin respond-to($media) {
-  @media only screen and #{$media} {
+@mixin respond-min($resolution) {
+  @media (min-width: #{$resolution}) {
+    @content;
+  }
+}
+
+@mixin respond-max($resolution) {
+  @media (max-width: #{$resolution}) {
     @content;
   }
 }

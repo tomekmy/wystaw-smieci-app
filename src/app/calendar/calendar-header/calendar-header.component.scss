@@ -4,7 +4,7 @@
   &__buttons {
     justify-self: center;
     margin: 0 1.65vw;
-    @include respond-to($calendar-header-buttons) {
+    @include respond-min($calendar-header-buttons) {
       justify-self: start;
     }
   }
@@ -12,10 +12,10 @@
     text-align: center;
     justify-self: center;
     margin: 0 1.65vw;
-    @include respond-to($calendar-header-buttons) {
+    @include respond-min($calendar-header-buttons) {
       justify-self: end;
     }
-    @include respond-to($calendar-header) {
+    @include respond-min($calendar-header) {
       justify-self: center;
       margin: 0;
     }

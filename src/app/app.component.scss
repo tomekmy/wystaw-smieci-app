@@ -12,7 +12,7 @@
                         "down-divider down-divider"
                         "calendar calendar"
                         "footer footer";
-  @include respond-to($header-collapse) {
+  @include respond-min($header-collapse) {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: max-content 7em 1em 1fr auto;
     grid-template-areas:  "header header header"
@@ -33,7 +33,7 @@
   grid-area: sectors;
   justify-self: start;
   align-self: end;
-  @include respond-to($header-collapse) {
+  @include respond-min($header-collapse) {
     align-self: center;
   }
 }
