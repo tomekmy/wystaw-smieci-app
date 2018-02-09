@@ -38,6 +38,10 @@ body {
   height: 2.2em;
 }
 
+.cal-month-view .cal-header .cal-cell:hover {
+  background-color: inherit;  
+}
+
 // Overriding material button font size
 .mat-button, .mat-fab, .mat-icon-button, .mat-mini-fab, .mat-raised-button {
   font-size: 0.9em;
