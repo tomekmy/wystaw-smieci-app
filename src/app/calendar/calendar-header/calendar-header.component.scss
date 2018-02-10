@@ -23,11 +23,8 @@
   &__date::first-letter {
     text-transform: capitalize;
   }
-  &__title, &__date {
+  &__date {
     margin: 0.5em;
     font-weight: 500;
-  }
-  &__title {
-    color: $secondary-text-color;
   }
 }
