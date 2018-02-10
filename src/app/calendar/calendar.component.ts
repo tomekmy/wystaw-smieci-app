@@ -47,7 +47,7 @@ export class CalendarComponent implements OnInit {
     // Push data from firebase json to calendar events
     let color: string;
     let type: string;
-    this.dataService.dates.forEach(sector => {
+    dataService.dates.forEach(sector => {
       for (let key in sector) {
         sector[key].forEach(term => {
           if (key === 'green') {

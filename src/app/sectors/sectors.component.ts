@@ -11,6 +11,10 @@ export class SectorsComponent implements OnInit {
   userSector: string = 'inherit';
   sectors: {value: string, viewValue: string, name: string, boundary: string}[] = [];
 
+  constructor(private dataService: DataService) { 
+    this.sectors = dataService.sectors;
+  }
+
   // Set material select text color to selected sector color
   setSelectColor(select: any) {
     let selectElementClass = select.source.trigger.nativeElement.childNodes[0];
@@ -18,10 +22,6 @@ export class SectorsComponent implements OnInit {
     // Get selected item id from $event object and use replace to change each letter to empty char - leave only number
     let id: any = select.source.selected.id.replace( /^\D+/g, '');
     this.dataService.sectorUpdated.emit(parseInt(id));
-  }
-
-  constructor(private dataService: DataService) { 
-    this.sectors = this.dataService.sectors;
   }
 
   ngOnInit() {
