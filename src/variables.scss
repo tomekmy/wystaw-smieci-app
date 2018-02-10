@@ -12,6 +12,7 @@ $divider-color:        #BDBDBD;
 $calendar-header: 64em; // 1024px
 $header-collapse: 48em; // 768px
 $calendar-header-buttons: 42em; // 672px
+$calendar-cell-icons: 31.250em; // 500px
 
 // Media queries
 @mixin respond-min($resolution) {
