@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CalendarEvent, CalendarUtils } from 'angular-calendar';
+import { DataService } from '../data.service';
 import {
   addDays,
   addHours,
@@ -33,16 +34,35 @@ export class MyCalendarUtils extends CalendarUtils {
 })
 export class CalendarComponent implements OnInit {
   viewDate: Date = new Date();
-
   events: CalendarEvent[] = [];
-
   view: string = 'month';
-
   clickedDate: Date;
-
   locale: string = 'pl';
 
-  constructor() { }
+  constructor(private dataService: DataService) {
+    // Push data from firebase json to calendar events
+    let color: string = 'transparent';
+    this.dataService.dates.forEach(sector => {
+      for (let key in sector) {
+        sector[key].forEach(term => {
+          if (key === 'green') {
+            color = 'green';
+          } else if(key === 'blue') {
+            color = 'blue';
+          } else if(key === 'yellow') {
+            color = 'gold';
+          }
+          this.events.push(
+            { 
+              title: term.type,
+              start: new Date(term.term),
+              color: {primary: color,secondary: color}
+            }
+          );
+        });
+      }
+    });
+  }
 
   ngOnInit() {
   }
