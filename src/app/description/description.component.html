@@ -5,5 +5,7 @@
   <p class="description__boundary">
     {{ descriptionBoundary }}
   </p>
-  <h4 class="description__nearest">Najbliższy odbiór w wybranym sektorze: </h4>
+  <h4 class="description__nearest">Najbliższy odbiór w wybranym sektorze: {{ nextDate | date:'fullDate':'':'pl' }}</h4>
 </div>
+
+<!-- TODO: Use global locale -->
