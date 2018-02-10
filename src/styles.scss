@@ -12,9 +12,9 @@ body {
 
 // Overriding calendar styles
 .cal-month-view .cal-day-cell.cal-today {
-  background-color: #C5CAE9;
+  background-color: #ffefef;
   &:hover {
-    background-color: #C5CAE9;
+    background-color: #ffefef;
   }
 }
 
@@ -26,10 +26,23 @@ body {
   font-size: 1.2em;
 }
 
+.cal-cell-top {
+  text-align: center;
+  @include respond-min($calendar-cell-icons) {
+    text-align: left;
+  }
+}
+
 .cal-month-view .cal-day-number {
   opacity: 0.6;
   margin-top: 4%;
   margin-right: 4%;
+  display: inline-block;
+  float: none;
+  @include respond-min($calendar-cell-icons) {
+    display: inline;
+    float: right;
+  }
 }
 
 .cal-month-view .cal-day-cell.cal-out-month .cal-day-number {
