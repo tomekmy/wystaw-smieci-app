@@ -2,13 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localePl from '@angular/common/locales/pl';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CookieLawModule } from 'angular2-cookie-law';
-import {MatSelectModule} from '@angular/material/select';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatButtonModule} from '@angular/material/button';
-import {CalendarModule} from 'angular-calendar';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { CalendarModule } from 'angular-calendar';
 
 import { AppComponent } from './app.component';
 import { SectorsComponent } from './sectors/sectors.component';
@@ -42,6 +43,7 @@ registerLocaleData(localePl);
     MatSlideToggleModule,
     MatDividerModule,
     MatButtonModule,
+    MatTooltipModule,
     CalendarModule.forRoot()
   ],
   providers: [DataService],
