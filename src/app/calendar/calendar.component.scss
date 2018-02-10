@@ -38,7 +38,17 @@
 }
 
 .calendar__icon {
-  padding: 4%;
+  padding: 10%;
   width: 2em;
   height: 2em;
+  @include respond-min($calendar-cell-icons) {
+    padding: 5.5%;
+  }
+}
+
+.calendar__month-view {
+  font-size: 0.8em;
+  @include respond-min($calendar-header-buttons) {
+    font-size: 1em;
+  }
 }
