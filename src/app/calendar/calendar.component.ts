@@ -33,6 +33,10 @@ export class MyCalendarUtils extends CalendarUtils {
   ]
 })
 export class CalendarComponent implements OnInit {
+  log(val) {
+    console.log(val);
+  }
+
   viewDate: Date = new Date();
   events: CalendarEvent[] = [];
   view: string = 'month';
@@ -41,7 +45,8 @@ export class CalendarComponent implements OnInit {
 
   constructor(private dataService: DataService) {
     // Push data from firebase json to calendar events
-    let color: string = 'transparent';
+    let color: string;
+    let type: string;
     this.dataService.dates.forEach(sector => {
       for (let key in sector) {
         sector[key].forEach(term => {
@@ -52,9 +57,18 @@ export class CalendarComponent implements OnInit {
           } else if(key === 'yellow') {
             color = 'gold';
           }
+
+          if (term.type === 'MIXED') {
+            type = 'Zmieszane';
+          } else if (term.type === 'SEGREGATED') {
+            type = 'Segregowalne';
+          } else if (term.type === 'BIO') {
+            type = 'Biodegradowalne';
+          }
+
           this.events.push(
             { 
-              title: term.type,
+              title: type,
               start: new Date(term.term),
               color: {primary: color,secondary: color}
             }
