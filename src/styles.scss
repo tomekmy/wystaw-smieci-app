@@ -18,12 +18,24 @@ body {
   }
 }
 
+.cal-month-view .cal-day-cell.cal-in-month.cal-has-events {
+  cursor: auto;
+}
+
+.cal-month-view .cal-day-cell.cal-today .cal-day-number {
+  font-size: 1.2em;
+}
+
 .cal-month-view .cal-day-number {
   opacity: 0.6;
+  margin-top: 4%;
+  margin-right: 4%;
 }
 
 .cal-month-view .cal-day-cell.cal-out-month .cal-day-number {
   opacity: 0.2;
+  margin-top: 4%;
+  margin-right: 4%;
 }
 
 .cal-month-view .cal-cell-row:hover {
