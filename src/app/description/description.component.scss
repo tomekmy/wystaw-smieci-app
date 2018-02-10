@@ -4,7 +4,15 @@
   &__text {
     text-align: center;
   }
+  &__title {
+    margin: 0.8em 0.5em 0.5em 0.5em;
+  }
   &__boundary {
     color: $secondary-text-color;
+    margin: 0.5em;
+  }
+  &__nearest {
+    margin: 0.8em;
+    font-weight: 500;
   }
 }
