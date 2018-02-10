@@ -19,3 +19,26 @@
 .calendar__devider {
   margin: 0.4em 0;
 }
+
+.calendar__day {
+  padding: 0.5em;
+  border-radius: 50%;
+  text-align: center;
+  width: 1.2em;
+  height: 1.2em;
+  &--green {
+    background: rgba(0, 128, 0, 0.5);
+  }
+  &--blue {
+    background: rgba(0, 0, 255, 0.5);
+  }
+  &--gold {
+    background: rgba(255, 217, 0, 0.5);
+  }
+}
+
+.calendar__icon {
+  padding: 4%;
+  width: 2em;
+  height: 2em;
+}
