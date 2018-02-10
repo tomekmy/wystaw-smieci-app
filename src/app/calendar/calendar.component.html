@@ -1,3 +1,27 @@
+<ng-template #customCellTemplate let-day="day" let-locale="locale">
+  <div *ngIf="day.badgeTotal > 0 && day.events[0].color.primary === 'green'" class="cal-cell-top">
+      <img *ngIf="day.events[0].title === 'Segregowalne'" class="calendar__icon" src="assets/img/recycle.svg" [alt]="day.events[0].title">
+      <img *ngIf="day.events[0].title === 'Biodegradowalne'" class="calendar__icon" src="assets/img/leafs.svg" [alt]="day.events[0].title">
+      <img *ngIf="day.events[0].title === 'Zmieszane'" class="calendar__icon" src="assets/img/trash_can.svg" [alt]="day.events[0].title">
+      <span class="cal-day-number calendar__day calendar__day--green">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
+  </div>
+  <div *ngIf="day.badgeTotal > 0 && day.events[0].color.primary === 'blue'" class="cal-cell-top">
+      <img *ngIf="day.events[0].title === 'Segregowalne'" class="calendar__icon" src="assets/img/recycle.svg" [alt]="day.events[0].title">
+      <img *ngIf="day.events[0].title === 'Biodegradowalne'" class="calendar__icon" src="assets/img/leafs.svg" [alt]="day.events[0].title">
+      <img *ngIf="day.events[0].title === 'Zmieszane'" class="calendar__icon" src="assets/img/trash_can.svg" [alt]="day.events[0].title">
+      <span class="cal-day-number calendar__day calendar__day--blue">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
+  </div>
+  <div *ngIf="day.badgeTotal > 0 && day.events[0].color.primary === 'gold'" class="cal-cell-top">
+      <img *ngIf="day.events[0].title === 'Segregowalne'" class="calendar__icon" src="assets/img/recycle.svg" [alt]="day.events[0].title">
+      <img *ngIf="day.events[0].title === 'Biodegradowalne'" class="calendar__icon" src="assets/img/leafs.svg" [alt]="day.events[0].title">
+      <img *ngIf="day.events[0].title === 'Zmieszane'" class="calendar__icon" src="assets/img/trash_can.svg" [alt]="day.events[0].title">
+      <span class="cal-day-number calendar__day calendar__day--gold">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
+  </div>
+  <div *ngIf="day.badgeTotal === 0" class="cal-cell-top">
+      <span class="cal-day-number calendar__day">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
+  </div>
+</ng-template>
+
 <app-calendar-header class="calendar__header"
   [(view)]="view" 
   [(viewDate)]="viewDate"
@@ -8,5 +32,6 @@
   [viewDate]="viewDate"
   [weekStartsOn]="1"
   [events]="events"
+  [cellTemplate]="customCellTemplate"
   [locale]="locale">
 </mwl-calendar-month-view>
