@@ -9,16 +9,33 @@ import { DataService } from '../data.service';
 export class DescriptionComponent implements OnInit {
   descriptionTitle: string;
   descriptionBoundary: string;
+  dates: Array<Date> = [];
+  nextDate: Date;
 
   constructor(private dataService: DataService) { 
-    this.descriptionTitle = this.dataService.sectors[0].name;
-    this.descriptionBoundary = this.dataService.sectors[0].boundary;
+    this.descriptionTitle = dataService.sectors[0].name;
+    this.descriptionBoundary = dataService.sectors[0].boundary;
     this.dataService.sectorUpdated.subscribe(
       (id: number) => {
-        this.descriptionTitle = this.dataService.sectors[id].name;
-        this.descriptionBoundary = this.dataService.sectors[id].boundary;
+        this.descriptionTitle = dataService.sectors[id].name;
+        this.descriptionBoundary = dataService.sectors[id].boundary;
       }
     );
+
+    // Build array with dates
+    dataService.dates.forEach(sector => {
+      for (let key in sector) {
+        sector[key].forEach(term => {
+          this.dates.push(new Date(term.term));
+        });
+      }
+    });
+
+    this.nextDate = new Date(Math.min.apply(Math, this.dates.filter(x => +x > Date.now())));
+
+    // TODO: Add garbage type
+
+    // console.log(nextDate);
   }
 
   ngOnInit() {
