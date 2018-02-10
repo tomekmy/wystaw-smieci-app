@@ -5,7 +5,7 @@
   display: grid;
   align-items: center;  
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: max-content 5.5em max-content 1em 1fr auto;
+  grid-template-rows: max-content max-content max-content 1em 1fr auto;
   grid-template-areas:  "header header"
                         "sectors toggle"
                         "description description" 
@@ -14,7 +14,7 @@
                         "footer footer";
   @include respond-min($header-collapse) {
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: max-content 7em 1em 1fr auto;
+    grid-template-rows: max-content max-content 1em 1fr auto;
     grid-template-areas:  "header header header"
                           "sectors description toggle"
                           "down-divider down-divider down-divider"
