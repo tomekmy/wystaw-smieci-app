@@ -5,5 +5,8 @@
   <p class="description__boundary">
     {{ descriptionBoundary }}
   </p>
-  <h4 class="description__nearest">Najbliższy odbiór w wybranym sektorze: <span class="description__nearest--date">{{ nextDate | date:'fullDate':'':locale }}</span></h4>
+  <h4 class="description__nearest">Najbliższy odbiór w wybranym sektorze:<br>
+    <span class="description__nearest--date">{{ nextDate | date:'fullDate':'':locale }}</span>
+    <span class="description__nearest--date">({{ type }})</span>
+  </h4>
 </div>
