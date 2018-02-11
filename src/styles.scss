@@ -67,6 +67,10 @@ body {
   background-color: inherit;  
 }
 
+.cal-out-month .cal-cell-top .calendar__icon {
+  opacity: 0.2;
+}
+
 // Overriding material button font size
 .mat-button, .mat-fab, .mat-icon-button, .mat-mini-fab, .mat-raised-button {
   font-size: 0.9em;
