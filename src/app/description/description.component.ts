@@ -11,8 +11,13 @@ export class DescriptionComponent implements OnInit {
   descriptionBoundary: string;
   dates: Array<Date> = [];
   nextDate: Date;
+  locale: string;
 
-  constructor(private dataService: DataService) { 
+  constructor(private dataService: DataService) {
+    // Get locale from data service
+    this.locale = dataService.locale;
+
+    // Get sectors description 
     this.descriptionTitle = dataService.sectors[0].name;
     this.descriptionBoundary = dataService.sectors[0].boundary;
     this.dataService.sectorUpdated.subscribe(

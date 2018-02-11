@@ -41,9 +41,12 @@ export class CalendarComponent implements OnInit {
   events: CalendarEvent[] = [];
   view: string = 'month';
   clickedDate: Date;
-  locale: string = 'pl';
+  locale: string;
 
   constructor(private dataService: DataService) {
+    // Get locale from data service
+    this.locale = dataService.locale;
+
     // Push data from firebase json to calendar events
     let color: string;
     let type: string;
