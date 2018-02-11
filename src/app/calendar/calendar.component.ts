@@ -33,10 +33,6 @@ export class MyCalendarUtils extends CalendarUtils {
   ]
 })
 export class CalendarComponent implements OnInit {
-  log(val) {
-    console.log(val);
-  }
-
   viewDate: Date = new Date();
   events: CalendarEvent[] = [];
   view: string = 'month';
