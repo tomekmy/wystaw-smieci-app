@@ -14,5 +14,9 @@
   &__nearest {
     margin: 0.8em;
     font-weight: 500;
+    &--date {
+      color: #cc0000;
+      white-space: nowrap;
+    }
   }
 }
