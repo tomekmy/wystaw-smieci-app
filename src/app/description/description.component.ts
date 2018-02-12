@@ -28,7 +28,7 @@ export class DescriptionComponent implements OnInit {
       }
     );
 
-    // Build array with dates
+    // Build array with dates and types
     dataService.dates.forEach(sector => {
       for (let key in sector) {
         sector[key].forEach(term => {
