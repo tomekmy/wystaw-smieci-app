@@ -31,7 +31,7 @@ export class DataService {
     }
   ];
 
-  dates = [{
+  inputDates = [{
     "blue": [{
       "term": "2018-01-02",
       "type": "MIXED"
@@ -148,8 +148,34 @@ export class DataService {
     }]
   }];
 
+  outputDates = [];
+
   sectorUpdated = new EventEmitter<number>();
 
-  constructor() { }
+  constructor() {
+    // Rewrite inputDates to outputDates
+    let type: string;
+    this.inputDates.forEach(sector => {
+      for (let key in sector) {
+        sector[key].forEach(value => {
+          if (value.type === 'MIXED') {
+            type = 'Zmieszane';
+          } else if (value.type === 'SEGREGATED') {
+            type = 'Segregowalne';
+          } else if (value.type === 'BIO') {
+            type = 'Biodegradowalne';
+          }
+
+          this.outputDates.push(
+            { 
+              sector: key,
+              term: new Date(value.term),
+              type: type
+            }
+          );
+        });
+      }
+    });
+  }
 
 }
