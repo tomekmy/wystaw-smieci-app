@@ -18,7 +18,7 @@ export class DescriptionComponent implements OnInit {
     // Get locale from data service
     this.locale = dataService.locale;
 
-    // Get sectors description 
+    // Get selected sectors description 
     this.descriptionTitle = dataService.sectors[0].name;
     this.descriptionBoundary = dataService.sectors[0].boundary;
     this.dataService.sectorUpdated.subscribe(
@@ -28,31 +28,10 @@ export class DescriptionComponent implements OnInit {
       }
     );
 
-    // Build array with dates and types
-    dataService.dates.forEach(sector => {
-      for (let key in sector) {
-        sector[key].forEach(term => {
-          this.dates.push([new Date(term.term), term.type]);
-        });
-      }
-    });
-    let sortedDates = this.dates.filter(x => +x[0] > Date.now());
-    this.nextDate = sortedDates[0][0];
-    this.type = sortedDates[0][1];
-    if (this.type === 'MIXED') {
-      this.type = 'Zmieszane';
-    } else if (this.type === 'SEGREGATED') {
-      this.type = 'Segregowalne';
-    } else if (this.type === 'BIO') {
-      this.type = 'Biodegradowalne';
-    }
-    // console.log(sortedDates[0][1]);
-    
-
-    // this.nextDate = new Date(Math.min.apply(Math, this.dates.filter(x => +x > Date.now())));
-
-    // TODO: Add garbage type
-
+    // Get nearest garbage collection date
+    let sortedDates = dataService.outputDates.filter(dates => +dates.term > Date.now());
+    this.nextDate = sortedDates[0].term;
+    this.type = sortedDates[0].type;
   }
 
   ngOnInit() {
