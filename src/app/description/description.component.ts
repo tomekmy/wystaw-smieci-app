@@ -15,6 +15,7 @@ export class DescriptionComponent implements OnInit {
   type: string;
 
   constructor(private dataService: DataService) {
+    let sortedDates = dataService.outputDates.filter(dates => +dates.term > Date.now());
     // Get locale from data service
     this.locale = dataService.locale;
 
@@ -25,11 +26,24 @@ export class DescriptionComponent implements OnInit {
       (id: number) => {
         this.descriptionTitle = dataService.sectors[id].name;
         this.descriptionBoundary = dataService.sectors[id].boundary;
+
+        // Get nearest garbage collection date
+
+        if (id === 0) {
+          sortedDates = dataService.outputDates.filter(dates => +dates.term > Date.now());
+          console.log(sortedDates);          
+        } else {
+          sortedDates = dataService.outputDates.filter(dates => {
+            if (dates.sector === 'yellow') {
+              dates.sector = 'gold';
+            }
+            return +dates.term > Date.now() && dates.sector === dataService.sectors[id].value;
+          });
+        }
+        this.nextDate = sortedDates[0].term;
+        this.type = sortedDates[0].type;
       }
     );
-
-    // Get nearest garbage collection date
-    let sortedDates = dataService.outputDates.filter(dates => +dates.term > Date.now());
     this.nextDate = sortedDates[0].term;
     this.type = sortedDates[0].type;
   }
