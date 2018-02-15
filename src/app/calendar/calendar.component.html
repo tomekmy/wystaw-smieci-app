@@ -7,13 +7,13 @@
     <img *ngIf="day.events[0].title === 'Zmieszane'" class="calendar__icon" src="assets/img/trash_can.svg" [alt]="day.events[0].title">
   </div>
   <div *ngIf="day.badgeTotal > 0 && day.events[0].color.primary === 'blue'" class="cal-cell-top" matTooltip="Sektor niebieski - {{ day.events[0].title }}">
-    <span class="cal-day-number calendar__day calendar__day--blue">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>      
+    <span class="cal-day-number calendar__day calendar__day--blue">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
     <img *ngIf="day.events[0].title === 'Segregowalne'" class="calendar__icon" src="assets/img/recycle.svg" [alt]="day.events[0].title">
     <img *ngIf="day.events[0].title === 'Biodegradowalne'" class="calendar__icon" src="assets/img/leafs.svg" [alt]="day.events[0].title">
     <img *ngIf="day.events[0].title === 'Zmieszane'" class="calendar__icon" src="assets/img/trash_can.svg" [alt]="day.events[0].title">
   </div>
   <div *ngIf="day.badgeTotal > 0 && day.events[0].color.primary === 'gold'" class="cal-cell-top" matTooltip="Sektor żółty - {{ day.events[0].title }}">
-    <span class="cal-day-number calendar__day calendar__day--gold">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>      
+    <span class="cal-day-number calendar__day calendar__day--gold">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
     <img *ngIf="day.events[0].title === 'Segregowalne'" class="calendar__icon" src="assets/img/recycle.svg" [alt]="day.events[0].title">
     <img *ngIf="day.events[0].title === 'Biodegradowalne'" class="calendar__icon" src="assets/img/leafs.svg" [alt]="day.events[0].title">
     <img *ngIf="day.events[0].title === 'Zmieszane'" class="calendar__icon" src="assets/img/trash_can.svg" [alt]="day.events[0].title">
@@ -27,5 +27,5 @@
 </app-calendar-header>
 <mat-divider class="calendar__devider"></mat-divider>
 <mwl-calendar-month-view class="calendar__month-view" [viewDate]="viewDate" [weekStartsOn]="1" [events]="events" [cellTemplate]="customCellTemplate"
-  [locale]="locale">
+  [locale]="locale" [refresh]="refresh">
 </mwl-calendar-month-view>

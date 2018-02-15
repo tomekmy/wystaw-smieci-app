@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Subject } from 'rxjs/Subject';
 import { CalendarEvent, CalendarUtils } from 'angular-calendar';
 import { DataService } from '../data.service';
 import {
@@ -38,6 +39,8 @@ export class CalendarComponent implements OnInit {
   view: string = 'month';
   clickedDate: Date;
   locale: string;
+  refresh: Subject<any> = new Subject();
+  EVENTS: CalendarEvent[] = [];
 
   constructor(private dataService: DataService) {
     // Get locale from data service
@@ -63,6 +66,20 @@ export class CalendarComponent implements OnInit {
         }
       );
     });
+
+    this.EVENTS = this.events;
+
+    this.dataService.sectorUpdated.subscribe(
+      (id: number) => {
+        if (id !== 0) {
+          this.events = this.EVENTS.filter(dates => dates.color.primary === dataService.sectors[id].value);
+        } else {
+          this.events = this.EVENTS;
+        }
+        console.log(this.events);
+        this.refresh.next();
+      }
+    );
   }
 
   ngOnInit() {
