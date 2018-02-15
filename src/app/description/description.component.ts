@@ -19,7 +19,7 @@ export class DescriptionComponent implements OnInit {
     // Get locale from data service
     this.locale = dataService.locale;
 
-    // Get selected sectors description 
+    // Get selected sectors description
     this.descriptionTitle = dataService.sectors[0].name;
     this.descriptionBoundary = dataService.sectors[0].boundary;
     this.dataService.sectorUpdated.subscribe(
@@ -31,7 +31,7 @@ export class DescriptionComponent implements OnInit {
 
         if (id === 0) {
           sortedDates = dataService.outputDates.filter(dates => +dates.term > Date.now());
-          console.log(sortedDates);          
+          console.log(sortedDates);
         } else {
           sortedDates = dataService.outputDates.filter(dates => {
             if (dates.sector === 'yellow') {

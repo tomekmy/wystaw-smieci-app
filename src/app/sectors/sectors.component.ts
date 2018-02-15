@@ -7,21 +7,21 @@ import { DataService } from '../data.service';
   styleUrls: ['./sectors.component.scss']
 })
 export class SectorsComponent implements OnInit {
-  // Default user sector is "Wszystkie" but user selection is stored in local storage 
-  userSector: string = 'inherit';
+  // Default user sector is "Wszystkie" but user selection is stored in local storage
+  userSector = 'inherit';
   sectors: {value: string, viewValue: string, name: string, boundary: string}[] = [];
 
-  constructor(private dataService: DataService) { 
+  constructor(private dataService: DataService) {
     this.sectors = dataService.sectors;
   }
 
   // Set material select text color to selected sector color
   setSelectColor(select: any) {
-    let selectElementClass = select.source.trigger.nativeElement.childNodes[0];
+    const selectElementClass = select.source.trigger.nativeElement.childNodes[0];
     selectElementClass.setAttribute('style', 'color:' + select.value);
     // Get selected item id from $event object and use replace to change each letter to empty char - leave only number
-    let id: any = select.source.selected.id.replace( /^\D+/g, '');
-    this.dataService.sectorUpdated.emit(parseInt(id));
+    const id: any = select.source.selected.id.replace( /^\D+/g, '');
+    this.dataService.sectorUpdated.emit(parseInt(id, 10));
   }
 
   ngOnInit() {
