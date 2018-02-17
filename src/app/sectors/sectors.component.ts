@@ -11,9 +11,7 @@ export class SectorsComponent implements OnInit {
   userSector = 'inherit';
   sectors: {value: string, viewValue: string, name: string, boundary: string}[] = [];
 
-  constructor(private dataService: DataService) {
-    this.sectors = dataService.sectors;
-  }
+  constructor(private dataService: DataService) { }
 
   // Set material select text color to selected sector color
   setSelectColor(select: any) {
@@ -25,6 +23,7 @@ export class SectorsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.sectors = this.dataService.sectors;
   }
 
 }
