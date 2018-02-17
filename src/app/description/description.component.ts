@@ -14,32 +14,37 @@ export class DescriptionComponent implements OnInit {
   locale: string;
   type: string;
 
-  constructor(private dataService: DataService) {
-    let sortedDates = dataService.outputDates.filter(dates => +dates.term > Date.now());
+  constructor(private dataService: DataService) { }
+
+  ngOnInit() {
+    // Default sorted dates
+    let sortedDates = this.dataService.outputDates.filter(dates => +dates.term > Date.now());
+    sortedDates = sortedDates.sort((a, b) =>  a.term - b.term);
     // Get locale from data service
-    this.locale = dataService.locale;
+    this.locale = this.dataService.locale;
 
     // Get selected sectors description
-    this.descriptionTitle = dataService.sectors[0].name;
-    this.descriptionBoundary = dataService.sectors[0].boundary;
+    this.descriptionTitle = this.dataService.sectors[0].name;
+    this.descriptionBoundary = this.dataService.sectors[0].boundary;
     this.dataService.sectorUpdated.subscribe(
       (id: number) => {
-        this.descriptionTitle = dataService.sectors[id].name;
-        this.descriptionBoundary = dataService.sectors[id].boundary;
+        this.descriptionTitle = this.dataService.sectors[id].name;
+        this.descriptionBoundary = this.dataService.sectors[id].boundary;
 
         // Get nearest garbage collection date
-
         if (id === 0) {
-          sortedDates = dataService.outputDates.filter(dates => +dates.term > Date.now());
-          console.log(sortedDates);
+          sortedDates = this.dataService.outputDates.filter(dates => dates.term > Date.now());
         } else {
-          sortedDates = dataService.outputDates.filter(dates => {
+          sortedDates = this.dataService.outputDates.filter(dates => {
             if (dates.sector === 'yellow') {
               dates.sector = 'gold';
             }
-            return +dates.term > Date.now() && dates.sector === dataService.sectors[id].value;
+            return +dates.term > Date.now() && dates.sector === this.dataService.sectors[id].value;
           });
         }
+
+        // Sort dates from min to max
+        sortedDates = sortedDates.sort((a, b) =>  a.term - b.term);
         this.nextDate = sortedDates[0].term;
         this.type = sortedDates[0].type;
       }
@@ -47,8 +52,4 @@ export class DescriptionComponent implements OnInit {
     this.nextDate = sortedDates[0].term;
     this.type = sortedDates[0].type;
   }
-
-  ngOnInit() {
-  }
-
 }
