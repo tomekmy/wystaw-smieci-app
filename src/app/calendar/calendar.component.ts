@@ -44,11 +44,11 @@ export class CalendarComponent implements OnInit {
 
   constructor(private dataService: DataService) {
     // Get locale from data service
-    this.locale = dataService.locale;
+    this.locale = dataService.getLocale();
 
     // Push data from firebase json to calendar events
     let color: string;
-    dataService.outputDates.forEach(index => {
+    dataService.getDates().forEach(index => {
       if (index.sector === 'green') {
         color = 'green';
       } else if (index.sector === 'blue') {
@@ -71,7 +71,7 @@ export class CalendarComponent implements OnInit {
     this.dataService.sectorUpdated.subscribe(
       (id: number) => {
         if (id !== 0) {
-          this.events = this.EVENTS.filter(dates => dates.color.primary === dataService.sectors[id].value);
+          this.events = this.EVENTS.filter(dates => dates.color.primary === dataService.getSectors()[id].value);
         } else {
           this.events = this.EVENTS;
         }

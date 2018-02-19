@@ -18,28 +18,28 @@ export class DescriptionComponent implements OnInit {
 
   ngOnInit() {
     // Default sorted dates
-    let sortedDates = this.dataService.outputDates.filter(dates => +dates.term > Date.now());
+    let sortedDates = this.dataService.getDates().filter(dates => +dates.term > Date.now());
     sortedDates = sortedDates.sort((a, b) =>  a.term - b.term);
     // Get locale from data service
-    this.locale = this.dataService.locale;
+    this.locale = this.dataService.getLocale();
 
     // Get selected sectors description
-    this.descriptionTitle = this.dataService.sectors[0].name;
-    this.descriptionBoundary = this.dataService.sectors[0].boundary;
+    this.descriptionTitle = this.dataService.getSectors()[0].name;
+    this.descriptionBoundary = this.dataService.getSectors()[0].boundary;
     this.dataService.sectorUpdated.subscribe(
       (id: number) => {
-        this.descriptionTitle = this.dataService.sectors[id].name;
-        this.descriptionBoundary = this.dataService.sectors[id].boundary;
+        this.descriptionTitle = this.dataService.getSectors()[id].name;
+        this.descriptionBoundary = this.dataService.getSectors()[id].boundary;
 
         // Get nearest garbage collection date
         if (id === 0) {
-          sortedDates = this.dataService.outputDates.filter(dates => dates.term > Date.now());
+          sortedDates = this.dataService.getDates().filter(dates => dates.term > Date.now());
         } else {
-          sortedDates = this.dataService.outputDates.filter(dates => {
+          sortedDates = this.dataService.getDates().filter(dates => {
             if (dates.sector === 'yellow') {
               dates.sector = 'gold';
             }
-            return +dates.term > Date.now() && dates.sector === this.dataService.sectors[id].value;
+            return +dates.term > Date.now() && dates.sector === this.dataService.getSectors()[id].value;
           });
         }
 

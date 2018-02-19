@@ -2,9 +2,9 @@ import { Injectable, EventEmitter } from '@angular/core';
 
 @Injectable()
 export class DataService {
-  locale = 'pl';
+  private locale = 'pl';
 
-  sectors = [
+  private sectors = [
     {
       value: 'inherit',
       viewValue: 'Wszystkie',
@@ -31,7 +31,7 @@ export class DataService {
     }
   ];
 
-  inputDates = [{
+  private inputDates = [{
     'blue': [{
       'term': '2018-01-02',
       'type': 'MIXED'
@@ -148,11 +148,19 @@ export class DataService {
     }]
   }];
 
-  outputDates = [];
+  private outputDates = [];
 
   sectorUpdated = new EventEmitter<number>();
 
-  constructor() {
+  getLocale() {
+    return this.locale;
+  }
+
+  getSectors() {
+    return this.sectors;
+  }
+
+  getDates() {
     // Rewrite inputDates to outputDates
     let type: string;
     this.inputDates.forEach(sector => {
@@ -176,6 +184,9 @@ export class DataService {
         });
       }
     });
+    return this.outputDates;
   }
+
+  constructor() { }
 
 }

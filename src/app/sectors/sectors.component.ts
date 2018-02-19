@@ -23,7 +23,7 @@ export class SectorsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.sectors = this.dataService.sectors;
+    this.sectors = this.dataService.getSectors();
   }
 
 }

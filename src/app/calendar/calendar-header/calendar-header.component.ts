@@ -14,7 +14,7 @@ export class CalendarHeaderComponent implements OnInit {
 
   constructor(private dataService: DataService) {
     // Get locale from data service
-    this.locale = dataService.locale;
+    this.locale = dataService.getLocale();
   }
 
   ngOnInit() {
