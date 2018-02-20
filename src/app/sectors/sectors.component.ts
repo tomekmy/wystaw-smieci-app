@@ -19,7 +19,7 @@ export class SectorsComponent implements OnInit {
     selectElementClass.setAttribute('style', 'color:' + select.value);
     // Get selected item id from $event object and use replace to change each letter to empty char - leave only number
     const id: any = select.source.selected.id.replace( /^\D+/g, '');
-    this.dataService.sectorUpdated.emit(parseInt(id, 10));
+    this.dataService.sectorUpdated.emit(+id);
   }
 
   ngOnInit() {
