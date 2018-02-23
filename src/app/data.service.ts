@@ -1,4 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class DataService {
@@ -31,123 +33,6 @@ export class DataService {
     }
   ];
 
-  private inputDates = [{
-    'blue': [{
-      'term': '2018-01-02',
-      'type': 'MIXED'
-    }, {
-      'term': '2018-01-15',
-      'type': 'SEGREGATED'
-    }, {
-      'term': '2018-01-16',
-      'type': 'MIXED'
-    }, {
-      'term': '2018-01-19',
-      'type': 'BIO'
-    }, {
-      'term': '2018-01-30',
-      'type': 'MIXED'
-    }, {
-      'term': '2018-02-12',
-      'type': 'SEGREGATED'
-    }, {
-      'term': '2018-02-13',
-      'type': 'MIXED'
-    }, {
-      'term': '2018-02-16',
-      'type': 'BIO'
-    }, {
-      'term': '2018-02-27',
-      'type': 'MIXED'
-    }, {
-      'term': '2018-03-12',
-      'type': 'SEGREGATED'
-    }, {
-      'term': '2018-03-13',
-      'type': 'MIXED'
-    }, {
-      'term': '2018-03-16',
-      'type': 'BIO'
-    }, {
-      'term': '2018-03-27',
-      'type': 'MIXED'
-    }],
-    'green': [{
-      'term': '2018-01-08',
-      'type': 'SEGREGATED'
-    }, {
-      'term': '2018-01-12',
-      'type': 'MIXED'
-    }, {
-      'term': '2018-01-18',
-      'type': 'BIO'
-    }, {
-      'term': '2018-01-26',
-      'type': 'MIXED'
-    }, {
-      'term': '2018-02-05',
-      'type': 'SEGREGATED'
-    }, {
-      'term': '2018-02-09',
-      'type': 'MIXED'
-    }, {
-      'term': '2018-02-15',
-      'type': 'BIO'
-    }, {
-      'term': '2018-02-23',
-      'type': 'MIXED'
-    }, {
-      'term': '2018-03-05',
-      'type': 'SEGREGATED'
-    }, {
-      'term': '2018-03-09',
-      'type': 'MIXED'
-    }, {
-      'term': '2018-03-15',
-      'type': 'BIO'
-    }, {
-      'term': '2018-03-23',
-      'type': 'MIXED'
-    }],
-    'yellow': [{
-      'term': '2018-01-09',
-      'type': 'MIXED'
-    }, {
-      'term': '2018-01-22',
-      'type': 'SEGREGATED'
-    }, {
-      'term': '2018-01-23',
-      'type': 'MIXED'
-    }, {
-      'term': '2018-01-25',
-      'type': 'BIO'
-    }, {
-      'term': '2018-02-06',
-      'type': 'MIXED'
-    }, {
-      'term': '2018-02-19',
-      'type': 'SEGREGATED'
-    }, {
-      'term': '2018-02-20',
-      'type': 'MIXED'
-    }, {
-      'term': '2018-02-22',
-      'type': 'BIO'
-    }, {
-      'term': '2018-03-06',
-      'type': 'MIXED'
-    }, {
-      'term': '2018-03-19',
-      'type': 'SEGREGATED'
-    }, {
-      'term': '2018-03-20',
-      'type': 'MIXED'
-    }, {
-      'term': '2018-03-22',
-      'type': 'BIO'
-    }]
-  }];
-
   private outputDates = [];
 
   sectorUpdated = new EventEmitter<number>();
@@ -160,33 +45,34 @@ export class DataService {
     return this.sectors;
   }
 
-  getDates() {
+  getJSON(): Observable<any> {
+    return this.http.get('assets/data.json');
+  }
+
+  getDates(data: Observable<any>) {
     // Rewrite inputDates to outputDates
     let type: string;
-    this.inputDates.forEach(sector => {
-      for (const key of Object.keys(sector)) {
-        sector[key].forEach(value => {
-          if (value.type === 'MIXED') {
-            type = 'Zmieszane';
-          } else if (value.type === 'SEGREGATED') {
-            type = 'Segregowalne';
-          } else if (value.type === 'BIO') {
-            type = 'Biodegradowalne';
-          }
+    for (const key of Object.keys(data)) {
+      data[key].forEach(value => {
+        if (value.type === 'MIXED') {
+          type = 'Zmieszane';
+        } else if (value.type === 'SEGREGATED') {
+          type = 'Segregowalne';
+        } else if (value.type === 'BIO') {
+          type = 'Biodegradowalne';
+        }
 
-          this.outputDates.push(
-            {
-              sector: key,
-              term: new Date(value.term),
-              type: type
-            }
-          );
-        });
-      }
-    });
+        this.outputDates.push(
+          {
+            sector: key,
+            term: new Date(value.term),
+            type: type
+          }
+        );
+      });
+    }
     return this.outputDates;
   }
 
-  constructor() { }
-
+  constructor(private http: HttpClient) { }
 }

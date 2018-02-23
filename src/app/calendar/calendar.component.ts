@@ -42,45 +42,46 @@ export class CalendarComponent implements OnInit {
   refresh: Subject<any> = new Subject();
   EVENTS: CalendarEvent[] = [];
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService) { }
+
+  ngOnInit() {
     // Get locale from data service
-    this.locale = dataService.getLocale();
+    this.locale = this.dataService.getLocale();
 
     // Push data from firebase json to calendar events
     let color: string;
-    dataService.getDates().forEach(index => {
-      if (index.sector === 'green') {
-        color = 'green';
-      } else if (index.sector === 'blue') {
-        color = 'blue';
-      } else if (index.sector === 'yellow') {
-        color = 'gold';
-      }
-
-      this.events.push(
-        {
-          title: index.type,
-          start: index.term,
-          color: {primary: color, secondary: color}
+    this.dataService.getJSON().subscribe(data => {
+      this.dataService.getDates(data).forEach(index => {
+        if (index.sector === 'green') {
+          color = 'green';
+        } else if (index.sector === 'blue') {
+          color = 'blue';
+        } else if (index.sector === 'yellow') {
+          color = 'gold';
         }
-      );
-    });
 
-    this.EVENTS = this.events;
+        this.events.push(
+          {
+            title: index.type,
+            start: index.term,
+            color: { primary: color, secondary: color }
+          }
+        );
+      });
+      this.EVENTS = this.events;
+      this.refresh.next();
+    });
 
     this.dataService.sectorUpdated.subscribe(
       (id: number) => {
         if (id !== 0) {
-          this.events = this.EVENTS.filter(dates => dates.color.primary === dataService.getSectors()[id].value);
+          this.events = this.EVENTS.filter(dates => dates.color.primary === this.dataService.getSectors()[id].value);
         } else {
           this.events = this.EVENTS;
         }
         this.refresh.next();
       }
     );
-  }
-
-  ngOnInit() {
   }
 
 }
