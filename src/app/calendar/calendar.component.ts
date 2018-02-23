@@ -48,7 +48,7 @@ export class CalendarComponent implements OnInit {
     // Get locale from data service
     this.locale = this.dataService.getLocale();
 
-    // Push data from firebase json to calendar events
+    // Push data from json file to calendar events
     let color: string;
     this.dataService.getJSON().subscribe(data => {
       this.dataService.getDates(data).forEach(index => {
