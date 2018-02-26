@@ -14,7 +14,6 @@ export class ToggleComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   onToggle(event) {
-    console.log('Zaznaczony: ' + event.checked);
     if (event.checked === true) {
       localStorage.notificationSector = this.sector;
       this.checked = true;
@@ -27,10 +26,8 @@ export class ToggleComponent implements OnInit {
   ngOnInit() {
     if (localStorage.notificationSector === this.sector) {
       this.checked = true;
-      // console.log('Make it green: ' + this.checked);
     } else {
       this.checked = false;
-      // console.log('Make it grey: ' + this.checked);
     }
 
     this.dataService.sectorUpdated.subscribe((id: number) => {
@@ -39,10 +36,8 @@ export class ToggleComponent implements OnInit {
       this.viewSector = this.dataService.getSectors()[id].viewValue;
       if (localStorage.notificationSector === this.sector) {
         this.checked = true;
-        // console.log('Make it green: ' + this.checked);
       } else {
         this.checked = false;
-        // console.log('Make it grey: ' + this.checked);
       }
     });
   }
