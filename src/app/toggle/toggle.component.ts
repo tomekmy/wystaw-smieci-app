@@ -10,6 +10,7 @@ export class ToggleComponent implements OnInit {
   viewSector = 'Wszystkie';
   sector = localStorage.lastSelectedSector || 'inherit';
   checked = false;
+  sectors = this.dataService.getSectors();
 
   constructor(private dataService: DataService) { }
 
@@ -24,6 +25,12 @@ export class ToggleComponent implements OnInit {
   }
 
   ngOnInit() {
+    for (const key of Object.keys(this.sectors)) {
+      if (this.sector === this.sectors[key].value) {
+        this.viewSector = this.sectors[key].viewValue;
+      }
+    }
+
     if (localStorage.notificationSector === this.sector) {
       this.checked = true;
     } else {
@@ -31,9 +38,9 @@ export class ToggleComponent implements OnInit {
     }
 
     this.dataService.sectorUpdated.subscribe((id: number) => {
-      this.sector = this.dataService.getSectors()[id].value;
+      this.sector = this.sectors[id].value;
       localStorage.lastSelectedSector = this.sector;
-      this.viewSector = this.dataService.getSectors()[id].viewValue;
+      this.viewSector = this.sectors[id].viewValue;
       if (localStorage.notificationSector === this.sector) {
         this.checked = true;
       } else {
