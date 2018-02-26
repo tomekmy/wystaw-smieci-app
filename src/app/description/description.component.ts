@@ -7,30 +7,25 @@ import { DataService } from '../data.service';
   styleUrls: ['./description.component.scss']
 })
 export class DescriptionComponent implements OnInit {
-  descriptionTitle: string;
-  descriptionBoundary: string;
-  dates: any[][] = [];
+  // Get sector object from dataService
+  sectors: Object = this.dataService.getSectors();
+  // By default set descriptions to "Wszystkie" sector
+  descriptionTitle: string = this.sectors[0].name;
+  descriptionBoundary: string = this.sectors[0].boundary;
   nextDate: Date;
-  locale: string;
+  // Get locale from dataService
+  locale: string = this.dataService.getLocale();
   type: string;
-  initialDates = [];
-  sortedDates = [];
-  sectors = this.dataService.getSectors();
+  initialDates: Array<any> = [];
+  sortedDates: Array<any> = [];
 
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    // Get locale from data service
-    this.locale = this.dataService.getLocale();
-
-    // By default set descriptions to "Wszystkie" sector
-    this.descriptionTitle = this.sectors[0].name;
-    this.descriptionBoundary = this.sectors[0].boundary;
-
-    // Default sorted dates
+    // Fires when finish read data from JSON file
     this.dataService.getJSON().subscribe(data => {
       this.initialDates = this.dataService.getDates(data);
-      this.sortedDates = this.initialDates.filter(dates => +dates.term > Date.now()).sort((a, b) =>  a.term - b.term);
+      this.sortedDates = this.initialDates.filter(dates => +dates.term > Date.now()).sort((a, b) => a.term - b.term);
       this.nextDate = this.sortedDates[0].term;
       this.type = this.sortedDates[0].type;
 
@@ -55,7 +50,7 @@ export class DescriptionComponent implements OnInit {
             }
 
             // Sort dates from min to max
-            this.sortedDates = this.sortedDates.sort((a, b) =>  a.term - b.term);
+            this.sortedDates = this.sortedDates.sort((a, b) => a.term - b.term);
             this.nextDate = this.sortedDates[0].term;
             this.type = this.sortedDates[0].type;
           }
@@ -63,6 +58,7 @@ export class DescriptionComponent implements OnInit {
       }
     });
 
+    // Fires on sector change
     this.dataService.sectorUpdated.subscribe(
       (id: number) => {
         this.descriptionTitle = this.sectors[id].name;
@@ -81,7 +77,7 @@ export class DescriptionComponent implements OnInit {
         }
 
         // Sort dates from min to max
-        this.sortedDates = this.sortedDates.sort((a, b) =>  a.term - b.term);
+        this.sortedDates = this.sortedDates.sort((a, b) => a.term - b.term);
         this.nextDate = this.sortedDates[0].term;
         this.type = this.sortedDates[0].type;
       }
