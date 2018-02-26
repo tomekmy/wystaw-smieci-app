@@ -8,7 +8,7 @@ import { DataService } from '../data.service';
 })
 export class SectorsComponent implements OnInit {
   // Default user sector is "Wszystkie" but user selection is stored in local storage
-  userSector = 'inherit';
+  userSector = localStorage.lastSelectedSector || 'inherit';
   sectors: {value: string, viewValue: string, name: string, boundary: string}[] = [];
 
   constructor(private dataService: DataService) { }
@@ -24,6 +24,7 @@ export class SectorsComponent implements OnInit {
 
   ngOnInit() {
     this.sectors = this.dataService.getSectors();
+    document.getElementsByClassName('mat-select-value')[0].setAttribute('style', 'color:' + this.userSector);
   }
 
 }
