@@ -41,6 +41,7 @@ export class CalendarComponent implements OnInit {
   locale: string;
   refresh: Subject<any> = new Subject();
   EVENTS: CalendarEvent[] = [];
+  sectors = this.dataService.getSectors();
 
   constructor(private dataService: DataService) { }
 
@@ -69,6 +70,15 @@ export class CalendarComponent implements OnInit {
         );
       });
       this.EVENTS = this.events;
+      if (localStorage.lastSelectedSector) {
+        for (const key of Object.keys(this.sectors)) {
+          if (this.sectors[key].value === localStorage.lastSelectedSector) {
+            if (key !== '0') {
+              this.events = this.EVENTS.filter(dates => dates.color.primary === this.dataService.getSectors()[key].value);
+            }
+          }
+        }
+      }
       this.refresh.next();
     });
 
