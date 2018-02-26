@@ -24,7 +24,7 @@ export class SectorsComponent implements OnInit {
 
   ngOnInit() {
     this.sectors = this.dataService.getSectors();
-    document.getElementsByClassName('mat-select-value')[0].setAttribute('style', 'color:' + this.userSector);
+    document.querySelector('.mat-select-value').setAttribute('style', 'color:' + this.userSector);
   }
 
 }
