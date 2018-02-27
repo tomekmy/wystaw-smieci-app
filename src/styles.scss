@@ -34,7 +34,7 @@ body {
 }
 
 .cal-month-view .cal-day-number {
-  opacity: 0.6;
+  opacity: 0.8;
   margin-top: 4%;
   margin-right: 4%;
   display: inline-block;
@@ -46,7 +46,7 @@ body {
 }
 
 .cal-month-view .cal-day-cell.cal-out-month .cal-day-number {
-  opacity: 0.2;
+  opacity: 0.3;
   margin-top: 4%;
   margin-right: 4%;
 }
@@ -68,10 +68,10 @@ body {
 }
 
 .cal-out-month .cal-cell-top .calendar__icon {
-  opacity: 0.2;
+  opacity: 0.3;
 }
 
-// Overriding material button font size
+// Overriding material styles
 .mat-slide-toggle-content {
   font-size: 0.9em;
 }
@@ -88,6 +88,14 @@ body {
 
 .mat-select-panel {
   max-height: none !important;
+}
+
+.mat-select-value-text {
+  text-shadow: 1px 1px 1px #5f5f5f;
+}
+
+.mat-form-field-label {
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .cdk-overlay-pane {
