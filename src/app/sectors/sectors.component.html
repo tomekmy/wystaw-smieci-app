@@ -1,6 +1,6 @@
 <mat-form-field class="sectors__select">
   <mat-select placeholder="Sektor" [value]="userSector" (change)="setSelectColor($event)">
-    <mat-option role="option" *ngFor="let sector of sectors" [value]="sector.value" [ngStyle]="{'color' : sector.value}">
+    <mat-option *ngFor="let sector of sectors" [value]="sector.value" [ngStyle]="{'color' : sector.value}">
       {{ sector.viewValue }}
     </mat-option>
   </mat-select>
