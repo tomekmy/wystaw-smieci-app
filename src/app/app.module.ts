@@ -1,8 +1,7 @@
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { ServiceWorkerModule } from '@angular/service-worker';
 import { registerLocaleData } from '@angular/common';
 import localePl from '@angular/common/locales/pl';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,8 +12,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { CalendarModule } from 'angular-calendar';
-
 import { AppComponent } from './app.component';
+import { environment } from '../environments/environment';
 import { SectorsComponent } from './sectors/sectors.component';
 import { ToggleComponent } from './toggle/toggle.component';
 import { CalendarComponent } from './calendar/calendar.component';
