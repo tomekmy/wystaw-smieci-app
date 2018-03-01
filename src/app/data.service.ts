@@ -33,8 +33,6 @@ export class DataService {
     }
   ];
 
-  private outputDates = [];
-
   sectorUpdated = new EventEmitter<number>();
 
   getLocale() {
@@ -52,6 +50,7 @@ export class DataService {
   getDates(data: Observable<any>) {
     // Rewrite inputDates to outputDates
     let type: string;
+    const outputDates = [];
     for (const key of Object.keys(data)) {
       data[key].forEach(value => {
         if (value.type === 'MIXED') {
@@ -62,7 +61,7 @@ export class DataService {
           type = 'Biodegradowalne';
         }
 
-        this.outputDates.push(
+        outputDates.push(
           {
             sector: key,
             term: new Date(value.term),
@@ -71,7 +70,7 @@ export class DataService {
         );
       });
     }
-    return this.outputDates;
+    return outputDates;
   }
 
   constructor(private http: HttpClient) { }
