@@ -70,14 +70,8 @@ export class CalendarComponent implements OnInit {
         );
       });
       this.EVENTS = this.events;
-      if (localStorage.lastSelectedSector) {
-        for (const key of Object.keys(this.sectors)) {
-          if (this.sectors[key].value === localStorage.lastSelectedSector) {
-            if (key !== '0') {
-              this.events = this.EVENTS.filter(dates => dates.color.primary === this.dataService.getSectors()[key].value);
-            }
-          }
-        }
+      if (localStorage.lastSelectedSector && localStorage.lastSelectedSector !== 'inherit') {
+        this.events = this.EVENTS.filter(dates => dates.color.primary === localStorage.lastSelectedSector);
       }
       this.refresh.next();
     });
