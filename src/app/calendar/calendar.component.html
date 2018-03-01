@@ -22,10 +22,11 @@
     <span class="cal-day-number calendar__day">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
   </div>
 </ng-template>
-
-<app-calendar-header class="calendar__header" [(view)]="view" [(viewDate)]="viewDate" [locale]="locale">
-</app-calendar-header>
-<mat-divider class="calendar__devider"></mat-divider>
-<mwl-calendar-month-view class="calendar__month-view" [viewDate]="viewDate" [weekStartsOn]="1" [events]="events" [cellTemplate]="customCellTemplate"
-  [locale]="locale" [refresh]="refresh">
-</mwl-calendar-month-view>
+<main>
+  <app-calendar-header class="calendar__header" [(view)]="view" [(viewDate)]="viewDate" [locale]="locale">
+  </app-calendar-header>
+  <mat-divider class="calendar__devider"></mat-divider>
+  <mwl-calendar-month-view class="calendar__month-view" [viewDate]="viewDate" [weekStartsOn]="1" [events]="events" [cellTemplate]="customCellTemplate"
+    [locale]="locale" [refresh]="refresh">
+  </mwl-calendar-month-view>
+</main>
