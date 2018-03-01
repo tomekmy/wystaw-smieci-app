@@ -21,4 +21,8 @@
       font-size: 0.9em;
     }
   }
+  &__aria-status {
+    position: absolute;
+    top: -500px;
+  }
 }
