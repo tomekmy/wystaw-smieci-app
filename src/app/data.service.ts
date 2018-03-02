@@ -36,7 +36,7 @@ export class DataService {
   ];
 
   // outputDates array is returned by getDates method
-  private outputDates = [];
+  private outputDates: {sector: string, term: Date, type: string}[] = [];
 
   // sectorUpdated emitter is emitted on every sector change
   sectorUpdated = new EventEmitter<number>();
