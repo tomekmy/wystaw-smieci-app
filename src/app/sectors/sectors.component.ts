@@ -9,7 +9,8 @@ import { DataService } from '../data.service';
 export class SectorsComponent implements OnInit {
   // Default user sector is "Wszystkie" but user selection is stored in local storage
   userSector = localStorage.lastSelectedSector || 'inherit';
-  sectors: {value: string, viewValue: string, name: string, boundary: string}[] = [];
+  // Get sectors object from dataService
+  sectors: {value: string, viewValue: string, name: string, boundary: string}[] = this.dataService.getSectors();
   sectorLabel: string;
 
   constructor(private dataService: DataService) { }
@@ -27,9 +28,8 @@ export class SectorsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.sectors = this.dataService.getSectors();
+    // Set sector color and aria-label on component initialization
     document.querySelector('.mat-select-value').setAttribute('style', 'color:' + this.userSector);
     this.sectorLabel = this.sectors.filter(dates => dates.value === this.userSector)[0].viewValue;
   }
-
 }

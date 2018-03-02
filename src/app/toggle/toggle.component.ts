@@ -7,13 +7,15 @@ import { DataService } from '../data.service';
   styleUrls: ['./toggle.component.scss']
 })
 export class ToggleComponent implements OnInit {
-  viewSector = 'Wszystkie';
+  viewSector: string;
   sector = localStorage.lastSelectedSector || 'inherit';
   checked = false;
-  sectors = this.dataService.getSectors();
+  // Get sectors object from dataService
+  sectors: {value: string, viewValue: string, name: string, boundary: string}[] = this.dataService.getSectors();
 
   constructor(private dataService: DataService) { }
 
+  // Switch checked state and set localStorage variable with sector to notify
   onToggle(event) {
     if (event.checked === true) {
       localStorage.notificationSector = this.sector;
@@ -25,21 +27,22 @@ export class ToggleComponent implements OnInit {
   }
 
   ngOnInit() {
-    for (const key of Object.keys(this.sectors)) {
-      if (this.sector === this.sectors[key].value) {
-        this.viewSector = this.sectors[key].viewValue;
-      }
-    }
+    // Set viewSector to display it in the brackets
+    this.viewSector = this.sectors.filter(dates => dates.value === this.sector)[0].viewValue;
 
+    // Check if user set notifications to this sector
+    // If yes set right checked state
     if (localStorage.notificationSector === this.sector) {
       this.checked = true;
     } else {
       this.checked = false;
     }
 
+    // Fires on every sector change
+    // Set new sector to notify and set right switch checked state
     this.dataService.sectorUpdated.subscribe((id: number) => {
       this.sector = this.sectors[id].value;
-      localStorage.lastSelectedSector = this.sector;
+      localStorage.lastSelectedSector = this.sectors[id].value;
       this.viewSector = this.sectors[id].viewValue;
       if (localStorage.notificationSector === this.sector) {
         this.checked = true;

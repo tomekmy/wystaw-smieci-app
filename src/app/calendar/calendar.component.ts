@@ -35,21 +35,23 @@ export class MyCalendarUtils extends CalendarUtils {
 })
 export class CalendarComponent implements OnInit {
   viewDate: Date = new Date();
+  // Events array to display in calendar
   events: CalendarEvent[] = [];
   view = 'month';
-  clickedDate: Date;
-  locale: string;
+  // Get locale from data service
+  locale: string = this.dataService.getLocale();
+  // Needed to refresh calendar view on change
   refresh: Subject<any> = new Subject();
+  // Events store once to use filter on it
   EVENTS: CalendarEvent[] = [];
-  sectors = this.dataService.getSectors();
+  // Get sector object from dataService
+  sectors: {value: string, viewValue: string, name: string, boundary: string}[] = this.dataService.getSectors();
 
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    // Get locale from data service
-    this.locale = this.dataService.getLocale();
-
-    // Push data from json file to calendar events
+    // Create calendar events array
+    // Push data from JSON file to calendar events
     let color: string;
     this.dataService.getJSON().subscribe(data => {
       this.dataService.getDates(data).forEach(index => {
@@ -69,14 +71,20 @@ export class CalendarComponent implements OnInit {
           }
         );
       });
+      // Store unfiltered events array to EVENTS
       this.EVENTS = this.events;
+      // Filter events to recently selected sector
       if (localStorage.lastSelectedSector && localStorage.lastSelectedSector !== 'inherit') {
         this.events = this.EVENTS.filter(dates => dates.color.primary === localStorage.lastSelectedSector);
       }
+      // Refresh calendar view
       this.refresh.next();
     });
 
+    // Fires when new sector is selected
     this.dataService.sectorUpdated.subscribe(
+      // If selected sector is not "Wszystkie" filter events by sector selector
+      // If selected sector is "Wszystkie" show all events in calendar
       (id: number) => {
         if (id !== 0) {
           this.events = this.EVENTS.filter(dates => dates.color.primary === this.dataService.getSectors()[id].value);
