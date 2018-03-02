@@ -4,8 +4,10 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class DataService {
+  // Default application locale
   private locale = 'pl';
 
+  // Sectors descriptions and colors
   private sectors = [
     {
       value: 'inherit',
@@ -33,26 +35,36 @@ export class DataService {
     }
   ];
 
+  // outputDates array is returned by getDates method
+  private outputDates = [];
+
+  // sectorUpdated emitter is emitted on every sector change
   sectorUpdated = new EventEmitter<number>();
 
-  getLocale() {
+  // Method to return default locale
+  getLocale(): string {
     return this.locale;
   }
 
-  getSectors() {
+  // Method to return sectors array of objects
+  getSectors(): {value: string, viewValue: string, name: string, boundary: string}[] {
     return this.sectors;
   }
 
+  // Method to return JSON file observable to subscribe
   getJSON(): Observable<any> {
     return this.http.get('assets/data.json');
   }
 
-  getDates(data: Observable<any>) {
-    // Rewrite inputDates to outputDates
+  // Method to build and return array of objects when JSON data subscription occurs
+  getDates(data: Observable<any>): {sector: string, term: Date, type: string}[] {
     let type: string;
-    const outputDates = [];
+    // outputDates need to be flushed of each time when getDates is called to avoid duplicate records
+    this.outputDates = [];
+    // Read data parameter given from getJSON subscription method
     for (const key of Object.keys(data)) {
       data[key].forEach(value => {
+        // Polish translation of garbage type
         if (value.type === 'MIXED') {
           type = 'Zmieszane';
         } else if (value.type === 'SEGREGATED') {
@@ -61,7 +73,8 @@ export class DataService {
           type = 'Biodegradowalne';
         }
 
-        outputDates.push(
+        // Build outputDates
+        this.outputDates.push(
           {
             sector: key,
             term: new Date(value.term),
@@ -70,7 +83,7 @@ export class DataService {
         );
       });
     }
-    return outputDates;
+    return this.outputDates;
   }
 
   constructor(private http: HttpClient) { }
