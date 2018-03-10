@@ -1,6 +1,7 @@
 {
     "name": "Wystaw \u015bmieci",
     "short_name": "\u015Amieci",
+    "start_url": "/index.html",
     "icons": [
         {
             "src": "img/icons/android-chrome-36x36.png",
