@@ -1,5 +1,3 @@
-<mat-slide-toggle class="toggle__slide" (change)="onToggle($event)" [checked]="checked">
-  Powiadomienia
-  <br>
-  <span class="toggle__slide__sector">(Sektor: {{viewSector}})</span>
+<mat-slide-toggle class="toggle__slide" (change)="onToggle($event)" [checked]="checked" matTooltip="Przypominaj sektor: {{viewSector}}">
+  Przypominaj
 </mat-slide-toggle>
