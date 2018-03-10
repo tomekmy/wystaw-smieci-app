@@ -116,3 +116,12 @@ body {
 .mat-tooltip {
   font-size: 0.8em;
 }
+
+// Override cookie law component styles
+.cookie-law .cookie-law-wrapper .dismiss {
+  top: 0 !important;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 20px !important;
+}
