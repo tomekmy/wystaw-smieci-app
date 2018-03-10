@@ -1,7 +1,7 @@
 .header {
   &__wrapper {
     display: grid;
-    grid-template-columns: max-content 1fr 1fr;
+    grid-template-columns: max-content 1fr;
     grid-template-rows: 3.5em;
     align-items: center;
   }
@@ -12,18 +12,6 @@
     font-size: 1em;
     font-weight: 500;
     display: inline-block;
-    margin: 0 0.5em;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-  }
-  &__facebook {
-    color: white;
-    text-decoration: none;
-    justify-self: end;
-    margin-right: calc(1.65vw - 16px);
-  }
-  &__facebook__logo {
     margin: 0 0.5em;
   }
 }
