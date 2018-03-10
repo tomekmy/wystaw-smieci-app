@@ -1,7 +1,7 @@
 @import "~variables.scss";
 
 .footer {
-  &__link {
+  &__link, &__facebook {
     color: $primary-color-light;
     text-decoration: none;
     &:hover {
@@ -11,5 +11,13 @@
   &__text {
     font-size: 0.85em;
     margin: 0.5em 1.65%;
+  }
+  &__facebook {
+    float: right;
+    &__logo {
+      vertical-align: bottom;
+      width: 1.2em;
+      height: 1.2em;
+    }
   }
 }
