@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { DataService } from '../../data.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { DataService } from '../../data.service';
   templateUrl: './calendar-header.component.html',
   styleUrls: ['./calendar-header.component.scss']
 })
-export class CalendarHeaderComponent implements OnInit {
+export class CalendarHeaderComponent {
   @Input() view: string;
   @Input() viewDate: Date;
   @Input() locale: string;
@@ -15,9 +15,6 @@ export class CalendarHeaderComponent implements OnInit {
   constructor(private dataService: DataService) {
     // Get locale from data service
     this.locale = dataService.getLocale();
-  }
-
-  ngOnInit() {
   }
 
 }
