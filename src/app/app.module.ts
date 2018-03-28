@@ -10,7 +10,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
-import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatTooltipModule, MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltipDefaultOptions } from '@angular/material/tooltip';
 import { CalendarModule } from 'angular-calendar';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
@@ -24,6 +24,12 @@ import { CalendarHeaderComponent } from './calendar/calendar-header/calendar-hea
 import { DataService } from './data.service';
 
 registerLocaleData(localePl);
+
+// Default tooltip options
+export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
+  showDelay: 1000,
+  hideDelay: 500
+};
 
 
 @NgModule({
@@ -50,7 +56,10 @@ registerLocaleData(localePl);
     MatTooltipModule,
     CalendarModule.forRoot()
   ],
-  providers: [DataService],
+  providers: [
+    DataService,
+    { provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: myCustomTooltipDefaults }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
