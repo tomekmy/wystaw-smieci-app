@@ -25,5 +25,7 @@
   ],
   "theme_color": "#3F51B5",
   "background_color": "#ffffff",
-  "display": "standalone"
+  "display": "standalone",
+  "gcm_sender_id": "482941778795",
+  "gcm_sender_id_comment": "Do not change the GCM Sender ID" 
 }
