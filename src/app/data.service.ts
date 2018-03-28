@@ -53,7 +53,9 @@ export class DataService {
 
   // Method to return JSON file observable to subscribe
   getJSON(): Observable<any> {
-    return this.http.get('assets/data.json');
+    return this.http.get('assets/data.json', {
+      headers: { 'Cache-Control' : 'no-cache' }
+    });
   }
 
   // Method to build and return array of objects when JSON data subscription occurs
