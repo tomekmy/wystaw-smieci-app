@@ -30,8 +30,11 @@ export class DescriptionComponent implements OnInit {
       this.initialDates = this.dataService.getDates(data);
       // Default next garbage collection date and type - for "Wszystkie"
       this.sortedDates = this.initialDates.filter(dates => +dates.term > Date.now()).sort((a, b) => +a.term - +b.term);
-      this.nextDate = this.sortedDates[0].term;
-      this.type = this.sortedDates[0].type;
+      // Sets the next date only if exist
+      if (this.sortedDates.length > 0) {
+        this.nextDate = this.sortedDates[0].term;
+        this.type = this.sortedDates[0].type;
+      }
 
       // Get selected sectors description
       // Check if user select any sector before and sector is not "Wszystkie"
@@ -49,8 +52,10 @@ export class DescriptionComponent implements OnInit {
 
         // Sort dates from min to max
         this.sortedDates = this.sortedDates.sort((a, b) => +a.term - +b.term);
-        this.nextDate = this.sortedDates[0].term;
-        this.type = this.sortedDates[0].type;
+        if (this.sortedDates.length > 0) {
+          this.nextDate = this.sortedDates[0].term;
+          this.type = this.sortedDates[0].type;
+        }
       }
     });
 
@@ -74,8 +79,10 @@ export class DescriptionComponent implements OnInit {
 
         // Sort dates from min to max
         this.sortedDates = this.sortedDates.sort((a, b) => +a.term - +b.term);
-        this.nextDate = this.sortedDates[0].term;
-        this.type = this.sortedDates[0].type;
+        if (this.sortedDates.length > 0) {
+          this.nextDate = this.sortedDates[0].term;
+          this.type = this.sortedDates[0].type;
+        }
       }
     );
   }

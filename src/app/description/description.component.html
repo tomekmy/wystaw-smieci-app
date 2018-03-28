@@ -6,8 +6,9 @@
     {{ descriptionBoundary }}
   </p>
   <h4 class="description__nearest">Najbliższy odbiór w wybranym sektorze:<br>
-    <span class="description__nearest--date">{{ nextDate | date:'fullDate':'':locale }}</span>
-    <span class="description__nearest--date">({{ type }})</span>
+    <span class="description__nearest--date" *ngIf="nextDate">{{ nextDate | date:'fullDate':'':locale }}</span>
+    <span class="description__nearest--date" *ngIf="!nextDate">Brak terminu</span>
+    <span class="description__nearest--date" *ngIf="nextDate">({{ type }})</span>
   </h4>
   <p role="status" class="description__aria-status"> {{ descriptionTitle }}  {{ descriptionBoundary }}. Najbliższy odbiór w wybranym sektorze: {{ nextDate | date:'fullDate':'':locale }} ({{ type }})</p>
 </div>
