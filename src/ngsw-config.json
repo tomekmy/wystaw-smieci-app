@@ -5,7 +5,9 @@
     "installMode": "prefetch",
     "resources": {
       "files": [
-        "/index.html"
+        "/index.html",
+        "/assets/data.json",
+        "/assets/img/*"
       ],
       "versionedFiles": [
         "/*.bundle.css",
@@ -18,7 +20,7 @@
     }
   }, {
     "name": "assets",
-    "installMode": "prefetch",
+    "installMode": "lazy",
     "updateMode": "prefetch",
     "resources": {
       "files": [
