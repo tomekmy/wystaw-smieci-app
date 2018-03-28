@@ -28,7 +28,8 @@ registerLocaleData(localePl);
 // Default tooltip options
 export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
   showDelay: 1000,
-  hideDelay: 500
+  hideDelay: 500,
+  touchendHideDelay: 500
 };
 
 
