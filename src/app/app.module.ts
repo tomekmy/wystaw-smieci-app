@@ -22,6 +22,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { CalendarHeaderComponent } from './calendar/calendar-header/calendar-header.component';
 import { DataService } from './data.service';
+import { WINDOW_PROVIDERS } from './window.service';
 
 registerLocaleData(localePl);
 
@@ -59,6 +60,7 @@ export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
   ],
   providers: [
     DataService,
+    WINDOW_PROVIDERS,
     { provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: myCustomTooltipDefaults }
   ],
   bootstrap: [AppComponent]

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { DataService } from '../data.service';
+import { WINDOW } from '../window.service';
 
 @Component({
   selector: 'app-toggle',
@@ -13,16 +14,18 @@ export class ToggleComponent implements OnInit {
   // Get sectors object from dataService
   sectors: {value: string, viewValue: string, name: string, boundary: string}[] = this.dataService.getSectors();
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, @Inject(WINDOW) private window: Window) { }
 
   // Switch checked state and set localStorage variable with sector to notify
   onToggle(event) {
     if (event.checked === true) {
       localStorage.notificationSector = this.sector;
       this.checked = true;
+      (<any>window).window.OneSignal.sendTag('sector', localStorage.notificationSector);
     } else {
       localStorage.notificationSector = null;
       this.checked = false;
+      (<any>window).window.OneSignal.sendTag('sector', 'none');
     }
   }
 
