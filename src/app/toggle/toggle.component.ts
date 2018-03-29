@@ -21,11 +21,15 @@ export class ToggleComponent implements OnInit {
     if (event.checked === true) {
       localStorage.notificationSector = this.sector;
       this.checked = true;
-      (<any>window).window.OneSignal.sendTag('sector', localStorage.notificationSector);
+      (<any>window).window.OneSignal.sendTag('sector', localStorage.notificationSector).then(function(tagsSent) {
+        console.log(`Subscribe user to:  ${localStorage.notificationSector} sector - with tags: ${tagsSent}`);
+      });
     } else {
       localStorage.notificationSector = null;
       this.checked = false;
-      (<any>window).window.OneSignal.sendTag('sector', 'none');
+      (<any>window).window.OneSignal.sendTag('sector', localStorage.notificationSector).then(function(tagsSent) {
+        console.log(`Unsubscribe user - with tags: ${tagsSent}`);
+      });
     }
   }
 
