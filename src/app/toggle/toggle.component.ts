@@ -1,6 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { DataService } from '../data.service';
-import { WINDOW } from '../window.service';
 
 @Component({
   selector: 'app-toggle',
@@ -14,21 +13,23 @@ export class ToggleComponent implements OnInit {
   // Get sectors object from dataService
   sectors: {value: string, viewValue: string, name: string, boundary: string}[] = this.dataService.getSectors();
 
-  constructor(private dataService: DataService, @Inject(WINDOW) private window: Window) { }
+  constructor(private dataService: DataService) { }
 
   // Switch checked state and set localStorage variable with sector to notify
   onToggle(event) {
     if (event.checked === true) {
       localStorage.notificationSector = this.sector;
       this.checked = true;
+      // Get here directly to global window object. I know it is a bad practice
       (<any>window).window.OneSignal.sendTag('sector', localStorage.notificationSector).then(function(tagsSent) {
-        console.log(`Subscribe user to:  ${localStorage.notificationSector} sector - with tags: ${tagsSent}`);
+        console.log(`Subscribe user to:  ${localStorage.notificationSector} sector - with tags: ${JSON.stringify(tagsSent)}`);
       });
     } else {
       localStorage.notificationSector = null;
       this.checked = false;
+      // Get here directly to global window object. I know it is a bad practice
       (<any>window).window.OneSignal.sendTag('sector', localStorage.notificationSector).then(function(tagsSent) {
-        console.log(`Unsubscribe user - with tags: ${tagsSent}`);
+        console.log(`Unsubscribe user - with tags: ${JSON.stringify(tagsSent)}`);
       });
     }
   }
