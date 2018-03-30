@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { ServiceWorkerModule } from '@angular/service-worker';
+// import { ServiceWorkerModule } from '@angular/service-worker';
 import { registerLocaleData } from '@angular/common';
 import localePl from '@angular/common/locales/pl';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -46,7 +46,7 @@ export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
   ],
   imports: [
     BrowserModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
+    // ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
     HttpClientModule,
     BrowserAnimationsModule,
     CookieLawModule,
