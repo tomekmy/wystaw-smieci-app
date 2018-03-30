@@ -27,6 +27,11 @@ export class ToggleComponent implements OnInit {
         this.snackBar.open('Pomyślnie zapisano do powiadomień', null, {
           duration: 2500,
         });
+      }).catch((error) => {
+        console.log(`Subscribe fail: ${error}`);
+        this.snackBar.open('Operacja zapisania nie udała się', null, {
+          duration: 2500,
+        });
       });
     } else {
       localStorage.notificationSector = null;
@@ -35,6 +40,11 @@ export class ToggleComponent implements OnInit {
       (<any>window).window.OneSignal.sendTag('sector', localStorage.notificationSector).then((tagsSent) => {
         console.log(`Unsubscribe user - with tags: ${JSON.stringify(tagsSent)}`);
         this.snackBar.open('Pomyślnie wypisano z powiadomień', null, {
+          duration: 2500,
+        });
+      }).catch((error) => {
+        console.log(`Unsubscribe fail: ${error}`);
+        this.snackBar.open('Operacja wypisania nie udała się', null, {
           duration: 2500,
         });
       });
