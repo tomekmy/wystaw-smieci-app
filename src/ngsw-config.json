@@ -15,8 +15,7 @@
         "/*.chunk.js"
       ],
       "urls": [
-        "https://fonts.googleapis.com/**",
-        "https://cdn.onesignal.com/**"
+        "https://fonts.googleapis.com/**"
       ]
     }
   }, {
