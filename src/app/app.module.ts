@@ -10,6 +10,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule, MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltipDefaultOptions } from '@angular/material/tooltip';
 import { CalendarModule } from 'angular-calendar';
 import { AppComponent } from './app.component';
@@ -55,6 +56,7 @@ export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
     MatDividerModule,
     MatButtonModule,
     MatTooltipModule,
+    MatSnackBarModule,
     CalendarModule.forRoot()
   ],
   providers: [

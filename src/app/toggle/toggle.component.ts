@@ -1,4 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
 import { DataService } from '../data.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class ToggleComponent implements OnInit {
   // Get sectors object from dataService
   sectors: {value: string, viewValue: string, name: string, boundary: string}[] = this.dataService.getSectors();
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, public snackBar: MatSnackBar) { }
 
   // Switch checked state and set localStorage variable with sector to notify
   onToggle(event) {
@@ -21,15 +22,21 @@ export class ToggleComponent implements OnInit {
       localStorage.notificationSector = this.sector;
       this.checked = true;
       // Get here directly to global window object. I know it is a bad practice
-      (<any>window).window.OneSignal.sendTag('sector', localStorage.notificationSector).then(function(tagsSent) {
+      (<any>window).window.OneSignal.sendTag('sector', localStorage.notificationSector).then((tagsSent) => {
         console.log(`Subscribe user to:  ${localStorage.notificationSector} sector - with tags: ${JSON.stringify(tagsSent)}`);
+        this.snackBar.open('Pomyślnie zapisano do powiadomień', null, {
+          duration: 2500,
+        });
       });
     } else {
       localStorage.notificationSector = null;
       this.checked = false;
       // Get here directly to global window object. I know it is a bad practice
-      (<any>window).window.OneSignal.sendTag('sector', localStorage.notificationSector).then(function(tagsSent) {
+      (<any>window).window.OneSignal.sendTag('sector', localStorage.notificationSector).then((tagsSent) => {
         console.log(`Unsubscribe user - with tags: ${JSON.stringify(tagsSent)}`);
+        this.snackBar.open('Pomyślnie wypisano z powiadomień', null, {
+          duration: 2500,
+        });
       });
     }
   }
