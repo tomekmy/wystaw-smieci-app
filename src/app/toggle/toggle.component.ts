@@ -22,6 +22,7 @@ export class ToggleComponent implements OnInit {
       localStorage.notificationSector = this.sector;
       this.checked = true;
       // Get here directly to global window object. I know it is a bad practice
+      // Send user data to OneSignal API and use snack bar to info
       (<any>window).window.OneSignal.sendTag('sector', localStorage.notificationSector).then((tagsSent) => {
         console.log(`Subscribe user to:  ${localStorage.notificationSector} sector - with tags: ${JSON.stringify(tagsSent)}`);
         this.snackBar.open('Pomyślnie zapisano do powiadomień', null, {
@@ -37,6 +38,7 @@ export class ToggleComponent implements OnInit {
       localStorage.notificationSector = null;
       this.checked = false;
       // Get here directly to global window object. I know it is a bad practice
+      // Send user data to OneSignal API and use snack bar to info
       (<any>window).window.OneSignal.sendTag('sector', localStorage.notificationSector).then((tagsSent) => {
         console.log(`Unsubscribe user - with tags: ${JSON.stringify(tagsSent)}`);
         this.snackBar.open('Pomyślnie wypisano z powiadomień', null, {
