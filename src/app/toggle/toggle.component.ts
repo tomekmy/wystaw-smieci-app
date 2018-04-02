@@ -16,6 +16,14 @@ export class ToggleComponent implements OnInit {
 
   constructor(private dataService: DataService, public snackBar: MatSnackBar) { }
 
+  // If service worker is in available in browser allow users to toggle notifications
+  canNotify() {
+    if ('serviceWorker' in navigator) {
+      return true;
+    }
+    return false;
+  }
+
   // Switch checked state and set localStorage variable with sector to notify
   onToggle(event) {
     if (event.checked === true) {
