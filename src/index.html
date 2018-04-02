@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Wystaw śmieci (BETA) - Zielonka</title>
   <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   <link rel="icon" type="image/x-icon" href="assets/img/icons/favicon.ico">
   <meta name="description" content="Dzięki tej aplikacji już nigdy nie zapomnisz o wystawieniu śmieci oraz będziesz miał wgląd we wszystkie strefy i terminy odbioru nieczystości.">
   <meta name="keywords" content="śmieci, nieczystości, segregowalne, wystaw, zielonka">
@@ -15,7 +15,6 @@
   <meta property="og:description" content="Dzięki tej aplikacji już nigdy nie zapomnisz o wystawieniu śmieci oraz będziesz miał wgląd we wszystkie strefy i terminy odbioru nieczystości.">
   <meta property="og:image" content="https://wystaw-smieci.pl/zielonka/assets/img/app-green.jpg">
   <link rel="canonical" href="https://zielonka.wystaw-smieci.pl">
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/icons/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/img/icons/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="assets/img/icons/android-chrome-192x192.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/img/icons/favicon-16x16.png">
@@ -24,6 +23,13 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="application-name" content="Śmieci">
   <meta name="apple-mobile-web-app-title" content="Śmieci">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#3F51B5">
+  <link rel="apple-touch-icon" href="assets/img/icons/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="assets/img/icons/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="assets/img/icons/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="assets/img/icons/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/icons/apple-touch-icon-180x180.png">  
+  <link rel="apple-touch-startup-image" href="assets/img/icons/android-chrome-512x512.png">
   <meta name="msapplication-starturl" content="index.html">
   <meta name="msapplication-config" content="assets/img/icons/browserconfig.xml">
   <meta name="msapplication-TileColor" content="#2d89ef">
@@ -33,12 +39,15 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;subset=latin-ext" rel="stylesheet">
   <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
   <script>
-    var OneSignal = window.OneSignal || [];
-    OneSignal.push(function() {
-      OneSignal.init({
-        appId: "396278aa-a2ed-4602-af64-a6311c0e4230",
+    // Add OneSignal ony when service worekr is in browser
+    if ('serviceWorker' in navigator) {
+      var OneSignal = window.OneSignal || [];
+      OneSignal.push(function() {
+        OneSignal.init({
+          appId: "396278aa-a2ed-4602-af64-a6311c0e4230",
+        });
       });
-    });
+    }
   </script>
 </head>
 <body dir="ltr">
