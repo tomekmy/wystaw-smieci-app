@@ -13,6 +13,13 @@ body {
   -moz-text-size-adjust: 100%;
 }
 
+.IE-warning {
+  margin-top: 3em;
+  font-size: 1.2em;
+  text-align: center;
+  font-weight: bold;
+}
+
 // Overriding calendar styles
 .cal-month-view .cal-day-cell.cal-today {
   background-color: #ffefef;
